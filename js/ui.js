@@ -1,10 +1,19 @@
 function UI (){
-    this.quiz_box = document.querySelector("#quiz-box");
+    this.quizBox = document.querySelector("#quiz-box");
     this.body = document.querySelector("#quiz-box #body");
     this.correctIcon = '<i class="bi bi-check-circle"></i>';
     this.incorrectIcon = '<i class="bi bi-x-circle"></i>';
     this.btnNext = document.querySelector(".btn-next")
+    this.btnReplay = document.querySelector(".btn-replay");
+    this.btnQuit = document.querySelector(".btn-quit");
+    this.btnStart = document.querySelector(".btn-start");
+    this.buttonBox = document.querySelector("#button-box");
+    this.scoreBox = document.querySelector("#score-box");
+    this.timeText = document.querySelector(".time-text");
+    this.timeSecond = document.querySelector(".time-second");
+
 }
+
 
 UI.prototype.soruGoster = function (soru){
     this.body.innerHTML="";
@@ -47,6 +56,12 @@ UI.prototype.disableAllOption = function(){
 UI.prototype.soruSayisiniGoster = function (soruSirasi, toplamSoru){
     const etiket = `<span class= "badge text-bg-danger">${soruSirasi} / ${toplamSoru}</span>`
     document.querySelector(".question-index").innerHTML = etiket;
+}
+ 
+UI.prototype.skoruGoster = function (dogruCevap, toplamSoru){
+    const etiket = `Toplam ${toplamSoru} soruda ${dogruCevap} doğru cevap verdiniz.`;
+    document.querySelector(".score-text").innerHTML = etiket;
+
 }
 
 
