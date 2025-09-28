@@ -8,3 +8,4 @@ Quiz.prototype.soruGetir = function (){
     return this.sorular[this.soruIndex];
 }   
 
+

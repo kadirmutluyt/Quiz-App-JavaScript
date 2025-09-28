@@ -11,7 +11,7 @@ function UI (){
     this.scoreBox = document.querySelector("#score-box");
     this.timeText = document.querySelector(".time-text");
     this.timeSecond = document.querySelector(".time-second");
-
+    this.timeLine = document.querySelector(".time-line");
 }
 
 
@@ -33,7 +33,7 @@ UI.prototype.soruGoster = function (soru){
         option.addEventListener("click", optionSelected);
 
         const span = document.createElement("span");
-        span.textContent = key + ")" + value;
+        span.textContent = key + ") " + value;
 
         option.appendChild(span);
         optionList.appendChild(option);
@@ -59,10 +59,24 @@ UI.prototype.soruSayisiniGoster = function (soruSirasi, toplamSoru){
 }
  
 UI.prototype.skoruGoster = function (dogruCevap, toplamSoru){
-    const etiket = `Toplam ${toplamSoru} soruda ${dogruCevap} doğru cevap verdiniz.`;
+    const etiket = `You answered ${dogruCevap} questions correctly out of a total of ${toplamSoru} questions.`;
     document.querySelector(".score-text").innerHTML = etiket;
-
 }
+
+UI.prototype.basariOrani = function (dogruCevap, toplamSoru){
+    const basariText = document.querySelector(".basari-text");
+    if (dogruCevap / toplamSoru >= 0.7) {
+        basariText.textContent = "Great Job!";
+        
+    }
+    else if ( (dogruCevap / toplamSoru)>= 0.5) {
+        basariText.textContent = "Not bad!";
+    }
+
+    else  {
+        basariText.textContent = "Study more!";
+    }
+}  
 
 
 
